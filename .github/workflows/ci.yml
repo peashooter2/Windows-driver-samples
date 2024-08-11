@@ -7,17 +7,22 @@ jobs:
   build:
     strategy:
       matrix:
-        configuration: [Debug, Release]
-        platform: [x64]
-    runs-on: windows-2022
+        configuration: [Debug]
+        platform: [x64,ARM64]
+    runs-on: windows-latest
     env:
-      Solution_Path: path\to\driver\solution.sln
+      Solution_Path: audio\Acx\Samples\udioCodec\Driver\AudioCodec.sln
+                     simpleaudiosample\SimpleAudioSample.sln
+                     sysvad\sysvad.sln
+                     avstream\avscamera\avscamera.sln
+                     avstream\avshws\avshws.sln
+                     avstream\avssamp\avssamp.sln
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build solution
         run: |
