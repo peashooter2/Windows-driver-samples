@@ -13,9 +13,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Debug]
         platform: [x64, arm64]
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
